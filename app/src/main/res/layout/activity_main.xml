@@ -8,39 +8,21 @@
     android:background="@color/blue_200"
     tools:context=".MainActivity">
 
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <!-- לבבות -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/default_margin"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl"
-        >
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_IMG_heart0"
-            android:layout_width="@dimen/heart_dimen"
-            android:layout_height="@dimen/heart_dimen"
-            app:srcCompat="@drawable/heart" />
+        <ImageView android:id="@+id/main_IMG_heart0" android:layout_width="@dimen/heart_dimen" android:layout_height="@dimen/heart_dimen" app:srcCompat="@drawable/heart"/>
+        <ImageView android:id="@+id/main_IMG_heart1" android:layout_width="@dimen/heart_dimen" android:layout_height="@dimen/heart_dimen" android:layout_marginHorizontal="@dimen/heart_margin" app:srcCompat="@drawable/heart"/>
+        <ImageView android:id="@+id/main_IMG_heart2" android:layout_width="@dimen/heart_dimen" android:layout_height="@dimen/heart_dimen" app:srcCompat="@drawable/heart"/>
+    </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_IMG_heart1"
-            android:layout_width="@dimen/heart_dimen"
-            android:layout_height="@dimen/heart_dimen"
-            android:layout_marginHorizontal="@dimen/heart_margin"
-            app:srcCompat="@drawable/heart" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/main_IMG_heart2"
-            android:layout_width="@dimen/heart_dimen"
-            android:layout_height="@dimen/heart_dimen"
-            app:srcCompat="@drawable/heart" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
+    <!-- כפתורים -->
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/main_FAB_left"
         android:layout_width="wrap_content"
@@ -52,9 +34,7 @@
         app:icon="@drawable/baseline_arrow_circle_left_24"
         app:iconSize="50dp"
         app:iconTint="@color/text_color"
-        android:text="" />
-
-
+        android:text=""/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/main_FAB_right"
@@ -67,10 +47,9 @@
         app:icon="@drawable/baseline_arrow_circle_right_24"
         app:iconSize="50dp"
         app:iconTint="@color/text_color"
-        android:text="" />
+        android:text=""/>
 
-
-
+    <!-- מכוניות -->
     <LinearLayout
         android:id="@+id/main_cars_layout"
         android:layout_width="match_parent"
@@ -79,89 +58,394 @@
         android:layout_above="@id/main_FAB_left"
         android:layout_marginBottom="-1dp"
         android:gravity="center"
-        android:layout_alignParentBottom="false"
         android:layout_centerHorizontal="true">
 
-        <ImageView
-            android:id="@+id/main_IMG_car0"
-            android:layout_width="@dimen/carw"
-            android:layout_height="@dimen/carh"
-            android:layout_margin="@dimen/default_margin"
-            android:src="@drawable/police_car" />
-
-        <ImageView
-            android:id="@+id/main_IMG_car1"
-            android:layout_width="@dimen/carw"
-            android:layout_height="@dimen/carh"
-            android:layout_margin="@dimen/default_margin"
-            android:src="@drawable/police_car" />
-
-        <ImageView
-            android:id="@+id/main_IMG_car2"
-            android:layout_width="@dimen/carw"
-            android:layout_height="@dimen/carh"
-            android:layout_margin="@dimen/default_margin"
-            android:src="@drawable/police_car" />
-
+        <ImageView android:id="@+id/main_IMG_car0" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
+        <ImageView android:id="@+id/main_IMG_car1" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
+        <ImageView android:id="@+id/main_IMG_car2" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
+        <ImageView android:id="@+id/main_IMG_car3" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
+        <ImageView android:id="@+id/main_IMG_car4" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
     </LinearLayout>
+
+    <!-- מכשולים -->
     <LinearLayout
         android:id="@+id/main_obstacles_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_cars_layout"
         android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="16dp">
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp">
 
-        <!-- טור שמאל -->
+
+    <!-- חמישה נתיבים -->
         <LinearLayout
-            android:id="@+id/lane_left"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <ImageView android:id="@+id/hydrant_0" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_1" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_2" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_3" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+            <!-- שורה 0 -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/hydrant_00"
+                    android:layout_width="@dimen/firew"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/fire_hydrant" />
+
+                <ImageView
+                    android:id="@+id/criminal_00"
+                    android:layout_width="@dimen/criminal"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_01" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_01" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_02" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_02" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible"  app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_03" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_03" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_04" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_04" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_05" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_05" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_06" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_06" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="0dp" android:layout_weight="1">
+                <ImageView android:id="@+id/hydrant_07" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_07" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal">
+            <!-- נתיב 1 -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_08" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_08" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_09" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_09" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_10" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_10" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_11" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_11" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_12" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_12" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_13" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_13" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_14" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_14" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_15" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_15" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
 
         </LinearLayout>
 
-        <!-- טור אמצע -->
-        <LinearLayout
-            android:id="@+id/lane_middle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal">
+            <!-- נתיב 2 -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            <ImageView android:id="@+id/hydrant_4" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_5" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_6" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_7" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/hydrant_16" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_16" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_17" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_17" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_18" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_18" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_19" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_19" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_20" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_20" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_21" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_21" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_22" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_22" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_23" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_23" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
 
         </LinearLayout>
 
-        <!-- טור ימין -->
-        <LinearLayout
-            android:id="@+id/lane_right"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            <ImageView android:id="@+id/hydrant_8" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_9" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_10" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
-            <ImageView android:id="@+id/hydrant_11" android:layout_width="@dimen/firew" android:layout_height="@dimen/fireh" android:layout_marginVertical="12dp" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/hydrant_24" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_24" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_25" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_25" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_26" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_26" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_27" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_27" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_28" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_28" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_29" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_29" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_30" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_30" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_31" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_31" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="match_parent" android:orientation="vertical" android:gravity="center_horizontal">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_32" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_32" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_33" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_33" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_34" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_34" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_35" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_35" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_36" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_36" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_37" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_37" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_38" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_38" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView android:id="@+id/hydrant_39" android:layout_width="@dimen/firew" android:layout_height="match_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/fire_hydrant" />
+                <ImageView android:id="@+id/criminal_39" android:layout_width="@dimen/criminal" android:layout_height="match_parent" android:scaleType="fitCenter" android:visibility="invisible" app:srcCompat="@drawable/criminal" />
+            </FrameLayout>
 
         </LinearLayout>
     </LinearLayout>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/main_LBL_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="false"
+        android:layout_margin="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="000"
+        android:textSize="@dimen/string_size"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@color/white"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:id="@+id/home_LBL_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Game Mode"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp" />
+
+    <Button
+        android:id="@+id/home_BTN_slow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2-Button Mode: Slow"
+        android:layout_below="@id/home_LBL_title"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/home_BTN_fast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2-Button Mode: Fast"
+        android:layout_below="@id/home_BTN_slow"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/home_BTN_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sensor Mode"
+        android:layout_below="@id/home_BTN_fast"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/home_BTN_sensor"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="0dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:maxHeight="300dp"
+        app:srcCompat="@drawable/policeicon" />
+</RelativeLayout>
