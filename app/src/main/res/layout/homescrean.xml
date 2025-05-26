@@ -4,9 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    android:background="@color/white"
-    tools:context=".HomeActivity">
+    tools:context=".utilities.HomeActivity">
 
+    <!-- רקע -->
+    <ImageView
+        android:id="@+id/image_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/policeicon"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/app_name"
+        android:alpha="0.2" />
+
+    <!-- תוכן מעל הרקע -->
     <TextView
         android:id="@+id/home_LBL_title"
         android:layout_width="wrap_content"
@@ -41,16 +53,13 @@
         android:layout_below="@id/home_BTN_fast"
         android:layout_marginTop="16dp" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <!-- כפתור חדש לטבלת שיאים -->
+    <Button
+        android:id="@+id/home_BTN_high_scores"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:text="High Scores"
         android:layout_below="@id/home_BTN_sensor"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="0dp"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:maxHeight="300dp"
-        app:srcCompat="@drawable/policeicon" />
+        android:layout_marginTop="16dp" />
+
 </RelativeLayout>

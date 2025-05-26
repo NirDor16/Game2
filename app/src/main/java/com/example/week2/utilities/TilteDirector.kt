@@ -32,20 +32,23 @@ class TiltDetector(context: Context, private val tiltCallback: TiltCallback?) {
             }
 
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-                // לא נדרש טיפול בשינוי דיוק
+                // לא נדרש טיפול בשינוי דיוק, לכן נשאיר ריק
             }
         }
     }
 
+
     private fun calculateTilt(x: Float) {
         if (System.currentTimeMillis() - timestamp >= 500) {
             timestamp = System.currentTimeMillis()
-            if (abs(x) >= 3.0) {
-                tiltCounterX++
-                tiltCallback?.tiltX()
+            if (x >= 3.0) {
+                tiltCallback?.tiltLeft()
+            } else if (x <= -3.0) {
+                tiltCallback?.tiltRight()
             }
         }
     }
+
 
     fun start() {
         sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL)

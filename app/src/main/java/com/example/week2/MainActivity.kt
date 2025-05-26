@@ -1,5 +1,9 @@
 package com.example.week2
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,17 +12,25 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.week2.logic.GameManager
+import com.example.week2.model.Score
+import com.example.week2.model.ScoreStorage
+import com.example.week2.utilities.*
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.example.week2.utilities.BackgroundMusicPlayer
 import com.example.week2.utilities.SignalManager
 import com.example.week2.utilities.SingleSoundPlayer
 import com.example.week2.utilities.TiltDetector
 import com.example.week2.interfaces.TiltCallback
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.example.week2.utilities.HomeActivity
+import com.example.week2.GameOverActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,13 +61,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         BackgroundMusicPlayer.init(this)
         backgroundMusicPlayer = BackgroundMusicPlayer.getInstance()
         backgroundMusicPlayer.setResourceId(R.raw.background_music)
 
-
         soundPlayer = SingleSoundPlayer(this)
-
 
         findViews()
         initGame()
@@ -64,11 +75,16 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<View>(R.id.main).post {
             if (main_IMG_cars.all { it.height > 0 && it.width > 0 }) {
+
+                // הפעלת החיישן רק כשהמשחק מתחיל באמת
+                tiltDetector?.start()
+
                 startGameLoop()
             } else {
                 Toast.makeText(this, "שגיאה: לא הצלחנו להתחיל את המשחק", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun handleGameMode() {
@@ -81,7 +97,11 @@ class MainActivity : AppCompatActivity() {
                 main_FAB_right.visibility = View.INVISIBLE
 
                 tiltDetector = TiltDetector(this, object : TiltCallback {
-                    override fun tiltX() {
+                    override fun tiltLeft() {
+                        gameManager.moveLeft()
+                    }
+
+                    override fun tiltRight() {
                         gameManager.moveRight()
                     }
                 })
@@ -127,8 +147,14 @@ class MainActivity : AppCompatActivity() {
                         SignalManager.getInstance().toast("Game Over!")
                         backgroundMusicPlayer.stopMusic()
                         handler.removeCallbacksAndMessages(null)
+
+                        val intent = Intent(this@MainActivity, GameOverActivity::class.java)
+                        intent.putExtra("FINAL_SCORE", gameManager.getScore())
+                        startActivity(intent)
+                        finish()
                         return
                     }
+
                 }
 
                 if (scored) {
@@ -147,12 +173,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateScore() {
-        scoreTextView.text = String.format("%03d", gameManager.getScore())
+        scoreTextView.text = gameManager.getScore().toString()
     }
 
 
 
-private fun findViews() {
+    private fun findViews() {
             main_IMG_hearts = arrayOf(
                 findViewById(R.id.main_IMG_heart0),
                 findViewById(R.id.main_IMG_heart1),

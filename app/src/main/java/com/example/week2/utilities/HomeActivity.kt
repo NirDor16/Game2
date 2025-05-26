@@ -1,9 +1,12 @@
-package com.example.week2
+package com.example.week2.utilities
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
+import com.example.week2.HighScoresActivity
+import com.example.week2.MainActivity
+import com.example.week2.R
 
 class HomeActivity : AppCompatActivity() {
 
@@ -28,6 +31,12 @@ class HomeActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.home_BTN_sensor).setOnClickListener {
             startGameWithMode(MODE_SENSOR)
+        }
+
+        // כפתור חדש - טבלת שיאים
+        findViewById<Button>(R.id.home_BTN_high_scores).setOnClickListener {
+            val intent = Intent(this, HighScoresActivity::class.java)
+            startActivity(intent)
         }
     }
 

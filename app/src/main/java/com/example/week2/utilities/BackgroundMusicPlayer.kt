@@ -19,7 +19,7 @@ class BackgroundMusicPlayer private constructor(context: Context){
             release()
         mediaPlayer = MediaPlayer.create(contextRef.get(), resId)
         mediaPlayer!!.isLooping = true
-        mediaPlayer!!.setVolume(0.4f,0.4f)
+        mediaPlayer!!.setVolume(0.1f,0.1f)
     }
 
     private fun release() {

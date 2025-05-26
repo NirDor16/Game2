@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/highscores_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".HighScoresActivity">
+
+    <!-- Fragment for High Scores List -->
+    <FrameLayout
+        android:id="@+id/main_FRAME_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Fragment for Map View -->
+    <FrameLayout
+        android:id="@+id/main_FRAME_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white" />
+
+    <Button
+        android:id="@+id/highscores_BTN_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="חזרה למסך הראשי"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>
