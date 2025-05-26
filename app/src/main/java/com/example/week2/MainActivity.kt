@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SignalManager.init(this)
+            //SignalManager.init(this)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+
         tiltDetector?.start()
         backgroundMusicPlayer.playMusic()
     }
@@ -139,12 +140,12 @@ class MainActivity : AppCompatActivity() {
                 if (hits.isNotEmpty()) {
                     val alive = gameManager.onHit()
                     updateHearts()
-                    SignalManager.getInstance().toast("התנגשות!!")
-                    SignalManager.getInstance().vibrate()
+                    SignalManager.toast(this@MainActivity, "התנגשות!!")
+                    SignalManager.vibrate(this@MainActivity)
                     soundPlayer.playSound(R.raw.boom)
 
                     if (!alive) {
-                        SignalManager.getInstance().toast("Game Over!")
+                        SignalManager.toast(this@MainActivity, "Game Over!")
                         backgroundMusicPlayer.stopMusic()
                         handler.removeCallbacksAndMessages(null)
 
@@ -154,7 +155,6 @@ class MainActivity : AppCompatActivity() {
                         finish()
                         return
                     }
-
                 }
 
                 if (scored) {
@@ -165,6 +165,7 @@ class MainActivity : AppCompatActivity() {
             }
         }, interval)
     }
+
 
     private fun updateHearts() {
         for (i in main_IMG_hearts.indices) {
