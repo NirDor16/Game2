@@ -46,12 +46,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var soundPlayer: SingleSoundPlayer
     private lateinit var backgroundMusicPlayer: BackgroundMusicPlayer
     private var tiltDetector: TiltDetector? = null
+    private var isGameOver = false
 
     private val handler = Handler(Looper.getMainLooper())
     private var interval: Long = 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        isGameOver = false
             //SignalManager.init(this)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -134,6 +136,9 @@ class MainActivity : AppCompatActivity() {
     private fun startGameLoop() {
         handler.postDelayed(object : Runnable {
             override fun run() {
+                // עצירה אם המשחק נגמר
+                if (isGameOver) return
+
                 val hits = gameManager.updateHydrants()
                 val scored = gameManager.updateCriminals()
 
@@ -145,8 +150,10 @@ class MainActivity : AppCompatActivity() {
                     soundPlayer.playSound(R.raw.boom)
 
                     if (!alive) {
+                        isGameOver = true // 🟥 חשוב: מונע המשך ריצה
                         SignalManager.toast(this@MainActivity, "Game Over!")
                         backgroundMusicPlayer.stopMusic()
+                        tiltDetector?.stop()
                         handler.removeCallbacksAndMessages(null)
 
                         val intent = Intent(this@MainActivity, GameOverActivity::class.java)
@@ -165,6 +172,8 @@ class MainActivity : AppCompatActivity() {
             }
         }, interval)
     }
+
+
 
 
     private fun updateHearts() {
