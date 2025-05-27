@@ -6,7 +6,7 @@
     android:padding="24dp"
     android:background="@color/white">
 
-    <!-- טקסט כאשר אין שיאים -->
+
     <TextView
         android:id="@+id/highscore_empty_text"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-    <!-- טבלת השיאים -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_scores"
         android:layout_width="match_parent"

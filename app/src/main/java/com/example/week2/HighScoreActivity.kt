@@ -42,7 +42,7 @@ class HighScoresActivity : AppCompatActivity(), ScoresListFragment.OnScoreSelect
             replace(R.id.main_FRAME_map, MapFragment())
         }
 
-        // השהיה קלה כדי לוודא שה-Fragment נטען
+
         score?.let {
             window.decorView.postDelayed({
                 val mapFragment = supportFragmentManager.findFragmentById(R.id.main_FRAME_map) as? MapFragment

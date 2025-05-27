@@ -44,7 +44,7 @@ class ScoresListFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val scores = ScoreStorage.loadScores(requireContext())
-            .filter { it.value > 0 } // רק שיאים אמיתיים
+            .filter { it.value > 0 }
 
         if (scores.isEmpty()) {
             emptyTextView.visibility = View.VISIBLE

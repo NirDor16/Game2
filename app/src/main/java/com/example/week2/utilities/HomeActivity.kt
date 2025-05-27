@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity() {
             startGameWithMode(MODE_SENSOR)
         }
 
-        // כפתור חדש - טבלת שיאים
+
         findViewById<Button>(R.id.home_BTN_high_scores).setOnClickListener {
             val intent = Intent(this, HighScoresActivity::class.java)
             startActivity(intent)

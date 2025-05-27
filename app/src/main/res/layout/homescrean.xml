@@ -6,7 +6,7 @@
     android:padding="24dp"
     tools:context=".utilities.HomeActivity">
 
-    <!-- רקע -->
+
     <ImageView
         android:id="@+id/image_background"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:contentDescription="@string/app_name"
         android:alpha="0.2" />
 
-    <!-- תוכן מעל הרקע -->
+
     <TextView
         android:id="@+id/home_LBL_title"
         android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
         android:layout_below="@id/home_BTN_fast"
         android:layout_marginTop="16dp" />
 
-    <!-- כפתור חדש לטבלת שיאים -->
+
     <Button
         android:id="@+id/home_BTN_high_scores"
         android:layout_width="match_parent"

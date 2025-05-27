@@ -35,14 +35,14 @@ object ScoreStorage {
     fun addScore(context: Context, newScore: Score): Boolean {
         val scores = loadScores(context)
 
-        // אם יש פחות מ-10 שיאים, פשוט נוסיף
+
         if (scores.size < MAX_SCORES) {
             scores.add(newScore)
             saveScores(context, scores)
             return true
         }
 
-        // אם יש 10 — נבדוק אם השיא החדש טוב מהנמוך ביותר
+
         val lowestScore = scores.minByOrNull { it.value }
         return if (lowestScore != null && newScore.value > lowestScore.value) {
             scores.remove(lowestScore)

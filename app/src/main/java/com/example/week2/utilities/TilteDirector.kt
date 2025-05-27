@@ -6,7 +6,6 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import com.example.week2.interfaces.TiltCallback
-import kotlin.math.abs
 
 class TiltDetector(context: Context, private val tiltCallback: TiltCallback?) {
 
@@ -32,7 +31,7 @@ class TiltDetector(context: Context, private val tiltCallback: TiltCallback?) {
             }
 
             override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-                // לא נדרש טיפול בשינוי דיוק, לכן נשאיר ריק
+
             }
         }
     }

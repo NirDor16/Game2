@@ -6,7 +6,7 @@
     android:padding="12dp"
     android:background="@drawable/score_item_bg">
 
-    <!-- שם השחקן -->
+
     <TextView
         android:id="@+id/item_LBL_name"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         android:textDirection="rtl"
         android:layout_marginBottom="4dp" />
 
-    <!-- ניקוד -->
+
     <TextView
         android:id="@+id/item_LBL_score"
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:textColor="@android:color/black"
         android:textDirection="rtl" />
 
-    <!-- מיקום -->
+
     <TextView
         android:id="@+id/item_LBL_location"
         android:layout_width="wrap_content"

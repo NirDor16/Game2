@@ -1,9 +1,6 @@
 package com.example.week2
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -12,16 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.week2.logic.GameManager
-import com.example.week2.model.Score
-import com.example.week2.model.ScoreStorage
-import com.example.week2.utilities.*
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.example.week2.utilities.BackgroundMusicPlayer
 import com.example.week2.utilities.SignalManager
@@ -29,7 +21,6 @@ import com.example.week2.utilities.SingleSoundPlayer
 import com.example.week2.utilities.TiltDetector
 import com.example.week2.interfaces.TiltCallback
 import com.example.week2.utilities.HomeActivity
-import com.example.week2.GameOverActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -54,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         isGameOver = false
-            //SignalManager.init(this)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
@@ -78,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.main).post {
             if (main_IMG_cars.all { it.height > 0 && it.width > 0 }) {
 
-                // הפעלת החיישן רק כשהמשחק מתחיל באמת
+
                 tiltDetector?.start()
 
                 startGameLoop()
@@ -116,13 +107,19 @@ class MainActivity : AppCompatActivity() {
 
         tiltDetector?.start()
         backgroundMusicPlayer.playMusic()
+        if (!isGameOver) {
+            startGameLoop()
+        }
+
     }
 
     override fun onPause() {
         super.onPause()
         tiltDetector?.stop()
         backgroundMusicPlayer.stopMusic()
+        handler.removeCallbacksAndMessages(null)
     }
+
 
     private fun initGame() {
         gameManager = GameManager(main_IMG_cars, hydrants, criminals)
@@ -136,7 +133,7 @@ class MainActivity : AppCompatActivity() {
     private fun startGameLoop() {
         handler.postDelayed(object : Runnable {
             override fun run() {
-                // עצירה אם המשחק נגמר
+
                 if (isGameOver) return
 
                 val hits = gameManager.updateHydrants()
@@ -150,7 +147,7 @@ class MainActivity : AppCompatActivity() {
                     soundPlayer.playSound(R.raw.boom)
 
                     if (!alive) {
-                        isGameOver = true // 🟥 חשוב: מונע המשך ריצה
+                        isGameOver = true
                         SignalManager.toast(this@MainActivity, "Game Over!")
                         backgroundMusicPlayer.stopMusic()
                         tiltDetector?.stop()

@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
-    <!-- לבבות -->
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         <ImageView android:id="@+id/main_IMG_heart2" android:layout_width="@dimen/heart_dimen" android:layout_height="@dimen/heart_dimen" app:srcCompat="@drawable/heart"/>
     </LinearLayout>
 
-    <!-- כפתורים -->
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/main_FAB_left"
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         app:iconTint="@color/text_color"
         android:text=""/>
 
-    <!-- מכוניות -->
+
     <LinearLayout
         android:id="@+id/main_cars_layout"
         android:layout_width="match_parent"
@@ -75,7 +75,7 @@
         <ImageView android:id="@+id/main_IMG_car4" android:layout_width="0dp" android:layout_weight="1" android:layout_height="@dimen/carh" android:layout_margin="@dimen/default_margin" android:src="@drawable/police_car"/>
     </LinearLayout>
 
-    <!-- מכשולים -->
+
     <LinearLayout
         android:id="@+id/main_obstacles_layout"
         android:layout_width="match_parent"
@@ -86,7 +86,7 @@
         android:layout_marginBottom="16dp">
 
 
-    <!-- חמישה נתיבים -->
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -94,7 +94,7 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- שורה 0 -->
+
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"

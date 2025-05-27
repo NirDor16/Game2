@@ -3,7 +3,6 @@ package com.example.week2.logic
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
-import kotlin.random.Random
 
 class GameManager(
     private val cars: Array<AppCompatImageView>,
